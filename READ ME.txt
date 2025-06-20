@@ -1,0 +1,42 @@
+Multi-Threaded Web Server
+
+OVERVIEW:
+This project implements a multi-threaded web server capable of processing HTTP requests from clients such as web browsers. The server supports essential HTTP functionalities, including handling GET and HEAD requests, caching, persistent/non-persistent connections, and response statuses.
+
+FEATURES:
+-Multi-threaded handling for concurrent client requests
+-GET request support for text and image files
+-HEAD request support (returns headers only)
+-Six HTTP response statuses: 
+  - 200 OK
+  - 304 Not Modified
+  - 400 Bad Request
+  - 403 Forbidden
+  - 404 File Not Found
+  - 415 Unsupported Media Type
+-File caching to improve performance
+-Handling of Last-Modified and If-Modified-Since headers
+-Support for persistent (keep-alive) and non-persistent (close) connections
+-Server logging to record historical request data
+
+SETUP AND INSTALLATION:
+1. Ensure Python is installed (Version 3.x is recommended)
+2. Download the server script: web_service.py
+3. Place your web files in the same directory (e.g., index.html, images, etc.)
+4. To run the server: python server_log.txt / python3 server_log.txt
+5. The server will start listening on `127.0.0.1:8080`
+6. To request a specific file: http://127.0.0.1:8080/example.txt
+7. To force close the connection using curl: curl -H "Connection: close" http://127.0.0.1:8080/index.html
+
+USAGE
+-Open a web browser and enter: http://127.0.0.1:8080/index.html
+-You can also send requests using curl or Postman:
+curl -v http://127.0.0.1:8080/index.html curl -I http://127.0.0.1:8080/index.html # HEAD request
+
+
+LOG FILE FORMAT:
+Each client request is logged in server_log.txt with the following format:
+[Client IP] | [Timestamp] | [Requested File] | [HTTP Status] | [User-Agent]
+Example entry:
+192.168.1.10 | 2025-04-30 04:10:23 | index.html | 200 OK | Mozilla/5.0
+
